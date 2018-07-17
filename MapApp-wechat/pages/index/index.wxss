@@ -1,0 +1,31 @@
+.filter {
+  padding:5px;
+  float: left;
+  border:1px solid #aaa;
+  margin-top: 10px;
+  margin-bottom:0;
+  margin-left:10px;
+}
+.is_checked{
+  padding:5px;
+  float: left;
+  border:1px solid #aaa;
+  margin-top: 10px;
+  margin-bottom:0;
+  margin-left:10px;
+  color: #FE0002 ;
+  background: #fff;
+}
+.section {
+  font-size: 12px;
+  margin-bottom: 50px;
+}
+.cover-content {
+  position: fixed;
+  background-color: #FFF;
+  border: 1px solid #aaa;
+  left:5px;
+  right: 5px;
+  bottom: 5px;
+  height:100px;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Sign In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/morris.css" type="text/css"/>
+<!-- Graph CSS -->
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="css/jquery-ui.css"> 
+<!-- jQuery -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+</head> 
+<body>
+	<div class="main-wthree">
+	<div class="container">
+	<div class="sin-w3-agile">
+		<h2>登录管理系统</h2>
+		<form  id="form1" onsubmit="return false" action="##" method="post">
+			<div class="username">
+				<span class="username">用户名:</span>
+				<input type="text" name="name" id="username" class="name">
+				<div class="clearfix"></div>
+			</div>
+			<div class="password-agileits">
+				<span class="username">密码:</span>
+				<input type="password" name="password" id="password" class="password" >
+				<div class="clearfix"></div>
+			</div>
+			<div class="rem-for-agile">
+				<input type="checkbox" name="remember" class="remember">记住我<br>
+			</div>
+			<div class="login-w3">
+					<input type="submit" onclick="login()" class="login" value="登录">
+			</div>
+			<div class="clearfix"></div>
+		</form>
+
+	</div>
+	</div>
+	</div>
+</body>
+<script>
+function login(){
+		var username = $("#username").val();
+		var password = $("#password").val();
+		if(username == "" | password == ""){
+			alert("请输入账号密码")
+			return false;
+		}
+		
+        $.ajax({
+ 			    
+           		type: "POST",//方法类型
+				url: "http://127.0.0.1:8181/login.do",
+				dataType:'json',
+                data: {
+					"username":username,
+					"password":password
+				},
+				success: function (result) {
+					if(result.resource == "true") {
+						window.location.href="file:///D:/wx-xiaochengxu/index.html";
+					}else{
+						alert("您输入的密码有误");
+					}		 
+							
+				},
+				error:function(message){
+					alert("调用ajax请求出错");
+					alert(message);
+				}
+			})
+	}
+
+</script>
+</html>

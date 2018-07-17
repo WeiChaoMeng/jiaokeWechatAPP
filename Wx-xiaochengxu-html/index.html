@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/morris.css" type="text/css"/>
+<!-- Graph CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- //jQuery -->
+
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+</head> 
+<body>
+   <div class="page-container">
+   <!--/content-inner-->
+<div class="left-content">
+
+<!--heder end here-->
+		<ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        </ol>
+<!--four-grids here-->
+<div class="four-grids">
+	<div class="col-md-3 four-grid">
+		<div class="four-agileits">
+			<div class="icon">
+				<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+			</div>
+			<div class="four-text">
+				<h3>管理员</h3>
+				<h4 id="managerNum" > 2 </h4>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-3 four-grid">
+		<div class="four-agileinfo">
+			<div class="icon">
+				<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+			</div>
+			<div class="four-text">
+				<h3>城市</h3>
+				<h4 id="cityNum" >5</h4>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-3 four-grid">
+		<div class="four-w3ls">
+			<div class="icon">
+				<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
+			</div>
+			<div class="four-text">
+				<h3>项目</h3>
+				<h4 id="projectNum" >12</h4>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-3 four-grid">
+		<div class="four-wthree">
+			<div class="icon">
+				<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
+			</div>
+			<div class="four-text">
+				<h3>已完成项目</h3>
+				<h4 id="finishProNum" >4</h4>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="clearfix"></div>
+
+<!--//photoday-section-->
+<!--w3-agileits-pane-->
+<div class="w3-agileits-pane">
+	<div class="col-md-4 wthree-pan">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<i class="fa fa-bell fa-fw"></i> 城市项目 </div>
+			<!-- /.panel-heading -->
+			<div class="panel-body">
+				<div class="list-group">
+					
+				</div>
+				<!-- /.list-group -->
+			</div>
+			<!-- /.panel-body -->	
+		</div>
+	</div>
+	<div class="col-md-8 agile-info-stat">
+		<div class="stats-info stats-last widget-shadow">
+			<table class="table stats-table ">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>项目名</th>
+						<th>状态</th>
+						<th>所在地</th>
+					</tr>
+				</thead>
+				<tbody id="proList" >
+					
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+<!--agileinfo-grap-->
+<div class="agileinfo-grap">
+<div class="inner-block">
+</div>
+
+
+<p style="text-align:center;    margin-top: 25px;">
+	<em style="color:rgb(185, 185, 192)">Copyright &copy; 2018.Company name All rights reserved.More Templates
+		<a href="#" title="交科">北京交科</a>
+	</em>
+</p>
+
+<!--COPY rights end here-->
+</div>
+</div>
+  <!--//content-inner-->
+			<!--/sidebar-menu-->
+			<div class="sidebar-menu">
+				<header class="logo1">
+					<a href="#" class="sidebar-icon">
+						<span class="fa fa-bars"></span>
+					</a>
+				</header>
+				<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+				<div class="menu">
+					<ul id="menu">
+						<li>
+							<a href="index.html">
+								<i class="fa fa-tachometer"></i>
+								<span>首页</span>
+								<div class="clearfix"></div>
+							</a>
+						</li>
+						<li>
+							<a href="input-city.html">
+								<i class="fa fa-check-square-o nav_icon"></i>
+								<span>添加城市</span>
+								<div class="clearfix"></div>
+							</a>
+						</li>
+						<li id="menu-academico">
+							<a href="input.html">
+								<i class="fa fa-bar-chart"></i>
+								<span>添加工程</span>
+								<div class="clearfix"></div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			</div>
+			<script>
+				var toggle = true;
+
+				$(".sidebar-icon").click(function () {
+					if (toggle) {
+						$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+						$("#menu span").css({
+							"position": "absolute"
+						});
+					} else {
+						$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+						setTimeout(function () {
+							$("#menu span").css({
+								"position": "relative"
+							});
+						}, 400);
+					}
+
+					toggle = !toggle;
+				});
+
+				
+
+			</script>
+<!--js -->
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="js/bootstrap.min.js"></script>
+   <!-- /Bootstrap Core JavaScript -->	   
+<!-- morris JavaScript -->	
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/raphael-min.js"></script>
+<script src="js/morris.js"></script>
+</body>
+</html>

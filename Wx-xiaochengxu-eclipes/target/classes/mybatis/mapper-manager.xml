@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaoke.dao.ManagerDao">
+    
+    <select id="getUser"  parameterType="String" resultType="boolean" >
+    
+    	  <![CDATA[ select count(id) from user where username = #{username} AND password = #{password} ]]>
+    
+    </select>
+	
+	<select id="getIndexHeard"  resultType="com.jiaoke.bean.IndexHeard" >
+		SELECT 
+			cc.cityNum,
+			u.managerNum,
+			cl.projectNum,
+			clf.finishProNum
+		FROM (
+		    SELECT COUNT(*) AS cityNum FROM `city_code`
+		) AS cc ,
+		(
+		    SELECT COUNT(*) AS managerNum FROM `user`
+		) AS u,
+		(
+		    SELECT COUNT(*) AS projectNum FROM `city_location`
+		) AS cl ,
+		(
+		    SELECT COUNT(*) AS finishProNum FROM `city_location` WHERE `prostatus` = "1"
+		) AS clf
+	</select>
+    
+    <select id="getIndexCity" resultType="com.jiaoke.bean.IndexCity" >
+		SELECT
+		cc.`city_name` AS cityName,
+		COUNT(cl.id) AS cityProNum
+		FROM
+		`city_code` AS cc
+		JOIN 
+		`city_location` AS cl
+		ON cc.`id` = cl.`citycode`
+		GROUP BY cl.`citycode`
+    </select>
+    
+    <select id="getIndexProject"  resultType="com.jiaoke.bean.IndexLocation" >
+    	SELECT
+		   cl.id as id,
+		   cc.`city_name` AS cityName,
+		   cl.`proname` AS proName,
+		   ps.`status` AS statusName
+		FROM 
+		   `city_location` AS cl
+		JOIN 
+		   `city_code` AS cc
+		ON 
+		   cl.`citycode` = cc.`id`
+		JOIN 
+		   `project_status` AS ps
+		ON cl.`prostatus` = ps.`id`
+
+    </select>
+    
+    <select id="getProStatus" resultType="com.jiaoke.bean.ProStatus" >
+    	select * from project_status
+    </select>
+    
+    <select id="getAllCity"  resultType="com.jiaoke.bean.City" >
+    	select id,city_name as cityName from city_code
+    </select>
+    
+    
+    <insert id="addLocation" parameterType="com.jiaoke.bean.CityLocation"  >
+    	<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey> 
+    		INSERT INTO 
+		`city_location` 
+		(`citycode`,`latitude`,`longitude`,`prostatus`,`proname`,`promessage`)
+		VALUES
+      ( 
+      	#{citycode},
+		#{latitude},
+		#{longitude},
+		#{prostatus},
+		#{proname},
+		#{promessage} )
+    
+    </insert>
+    
+    <insert id="addCity" parameterType="com.jiaoke.bean.AddCity" >
+    	<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey> 
+    	INSERT INTO 
+		`city_code`
+		(`city_name`,`city_lat`,`city_lng`)
+		VALUES
+		(
+		#{cityName},
+		#{cityLat},
+		#{cityLng}
+		)
+		    
+    </insert>
+    
+</mapper>	

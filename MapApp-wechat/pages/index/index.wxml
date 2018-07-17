@@ -1,0 +1,19 @@
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker" style="margin-left:10px;">当前城市：{{array[index]}}</view>
+  </picker>
+  <view class="filter" style='background-color:{{ first }}; color:{{ firstcolor }}'
+  bindtap='fileterProject' data-id='1' >地铁工程</view>
+  <view class="filter"  style='background-color:{{ second }}; color:{{ secondcolor }}'
+   bindtap='fileterProject' data-id='2'  >热力工程</view>
+  <view class="filter"  style='background-color:{{ third  }}; color:{{ thirdcolor }}'
+   bindtap='fileterProject' data-id='3'  >电力工程</view>
+  <view class="filter"  style='background-color:{{ fourth  }}; color:{{ fourthcolor }}'
+  bindtap='fileterProject' data-id='4'  >排水工程</view>
+</view>
+
+<map id="map" longitude="{{map.lng}}" latitude="{{map.lat}}" scale="12" controls="{{controls}}" bindcontroltap="controltap" markers="{{map.markers}}" bindcallouttap="clickMarker" bindmarkertap="markertap" polyline="{{polyline}}" mode="widthFix" bindregionchange="regionchange" show-location style="width: 100%;height:{{mapHeight}}px;">
+    <cover-view animation="{{animationData}}" class="cover-content" hidden='{{coverContentHidden}}'>
+        <label>{{proMessage}}</label>
+    </cover-view>
+</map>
